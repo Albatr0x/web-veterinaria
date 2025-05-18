@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Configurar 2FA</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="container">
+    <h2>Configurar Autenticación de Dos Factores</h2>
+    <p>Escanea este código QR con tu aplicación de autenticación (Google Authenticator, Authy, etc.)</p>
+
+    <img th:src="'data:image/png;base64,' + ${qrCode}" alt="QR Code">
+
+    <p>O ingresa manualmente este código secreto: <strong th:text="${secret}"></strong></p>
+
+    <form th:action="@{/2fa/verify}" method="post">
+        <input type="hidden" name="secret" th:value="${secret}">
+        <div class="form-group">
+            <label for="code">Código de verificación:</label>
+            <input type="text" id="code" name="code" required>
+        </div>
+        <button type="submit" class="btn">Verificar</button>
+    </form>
+
+    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+</div>
+</body>
+</html>

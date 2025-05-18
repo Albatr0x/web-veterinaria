@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Autenticación Multifactor</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/css/slicknav.css">
+    <link rel="stylesheet" href="/assets/css/flaticon.css">
+    <link rel="stylesheet" href="/assets/css/animate.min.css">
+    <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="/assets/css/slick.css">
+    <link rel="stylesheet" href="/assets/css/nice-select.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: url('/assets/img/gallery/contact_form.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .logo-container {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+        }
+        .mfa-container {
+            background: rgba(255,255,255,0.95);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            padding: 40px 30px;
+            max-width: 350px;
+            margin: 60px auto 0 auto;
+            position: relative;
+            text-align: center;
+        }
+        .mfa-container h1 {
+            margin-bottom: 25px;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .btn {
+            width: 100%;
+        }
+        @media (max-width: 500px) {
+            .mfa-container {
+                padding: 20px 10px;
+            }
+            .logo-container {
+                top: 10px;
+                left: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="logo-container">
+    <a href="/index.html">
+        <img src="/assets/img/logo/logo.png" alt="Logo" style="height:50px;">
+    </a>
+</div>
+<div class="d-flex justify-content-center align-items-center" style="min-height:100vh;">
+    <div class="mfa-container">
+
+        <!-- Solo muestra el QR si mostrarQr es true -->
+        <div th:if="${mostrarQr}">
+            <img th:src="'data:image/png;base64,' + ${qrCode}" alt="Código QR" style="display:block; margin:0 auto 20px auto; max-width:200px;">
+            <p>Escanea este código QR con tu app de autenticación.</p>
+        </div>
+
+        <!-- Siempre muestra el campo para ingresar el código -->
+        <form method="post" action="/mfa">
+            <div class="form-group">
+                <label for="code">Ingrese el código de la aplicación de autenticación de doble factor:</label>
+                <input type="text" id="code" name="code" required class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Verificar</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
