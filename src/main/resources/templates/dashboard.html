@@ -36,26 +36,41 @@
                     background: url('/assets/img/gallery/gallery2.png') no-repeat center center fixed;
                     background-size: cover;
                 }
-                .dashboard-container {
-                    max-width: 900px;
-                    margin: 60px auto 0 auto;
-                    background: #fff;
-                    border-radius: 10px;
-                    box-shadow: 0 0 20px rgba(0,0,0,0.08);
-                    padding: 40px 30px;
-                }
-                body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(255,255,255,0.5); /* Cambia el color y la opacidad según lo que desees */
-            z-index: 0;
-            pointer-events: none;
-        }
-        body, .dashboard-container {
-            position: relative;
-            z-index: 1;
-        }
+    .dashboard-container {
+    max-width: 900px;
+    margin: 60px auto 0 auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.08);
+    padding: 40px 30px;
+    position: relative;
+
+}
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(255,255,255,0.5);
+        z-index: 0;
+        pointer-events: none;
+    }
+    body {
+        min-height: 100vh;
+        margin: 0;
+        background: url('/assets/img/gallery/gallery2.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+    /* Elimina la siguiente línea o déjala solo para body si es necesario */
+    /* body, .dashboard-container {
+        position: static !important;
+        z-index: auto !important;
+    } */
+
+.dropdown-menu {
+  z-index: 2000 !important;
+  position: absolute !important;
+}
+
     </style>
 </head>
 <body>
@@ -74,7 +89,13 @@
                         <div class="main-menu f-right d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li><a href="/citas">Citas</a></li>
+                                    <li class="nav-item dropdown">
+                                        <a href="#" class="dropdown-toggle" id="citasDropdown" data-bs-toggle="dropdown" aria-expanded="false">Citas</a>
+                                        <ul class="dropdown-menu" aria-labelledby="citasDropdown">
+                                            <li><a class="dropdown-item" href="/menu/cita/nuevacita">Registrar Cita</a></li>
+                                            <li><a class="dropdown-item" href="/menu/cita/listarcitas">Mis Citas</a></li>
+                                        </ul>
+                                    </li>
                                     <li><a href="/servicios">Servicios</a></li>
                                     <li><a href="/veterinarias">Veterinarias</a></li>
                                     <li><a href="/mascotas">Mascotas</a></li>
@@ -94,7 +115,7 @@
                             <div class="dropdown">
                                 <a class="btn btn-light dropdown-toggle d-flex align-items-center" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
                                     <i class="fas fa-user-circle fa-lg me-2"></i>
-                                    <span th:text="${username}"></span>
+                                    <span th:text="${username}">Usuario</span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                                     <li>

@@ -18,7 +18,6 @@ public class SecurityConfig {
 
     private final CustomUserDetailsService userDetailsService;
 
-
     public SecurityConfig(CustomUserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
@@ -26,7 +25,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(AbstractHttpConfigurer::disable) // Opcional: Deshabilitar para APIs REST
+                .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/", "/index.html",
@@ -36,9 +35,13 @@ public class SecurityConfig {
                                 "/blog", "/blog.html",
                                 "/login", "/registro", "/assets/**"
                         ).permitAll()
+                        .requestMatchers(
+                                "/cita/nuevacita",
+                                "/cita/listarcitas.html"
+                        ).authenticated()
                         .anyRequest().authenticated()
                 )
-                .userDetailsService(userDetailsService) // ¡Esta es la línea clave que faltaba!
+                .userDetailsService(userDetailsService)
                 .formLogin(form -> form
                         .loginPage("/login")
                         .defaultSuccessUrl("/mfa", true)
@@ -52,7 +55,6 @@ public class SecurityConfig {
                         .deleteCookies("JSESSIONID")
                         .permitAll()
                 );
-
 
         return http.build();
     }
