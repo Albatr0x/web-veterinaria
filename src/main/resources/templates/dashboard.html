@@ -15,18 +15,46 @@
     <link rel="stylesheet" href="/assets/css/nice-select.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <style>
-        body {
-            min-height: 100vh;
-            margin: 0;
-            background: #f8f9fa;
+        .main-header, .main-menu nav, #navigation {
+            background: #fff !important;
         }
-        .dashboard-container {
-            max-width: 900px;
-            margin: 60px auto 0 auto;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.08);
-            padding: 40px 30px;
+
+        #navigation li a {
+            color: #333 !important;
+            background: transparent !important;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        #navigation li a:hover, #navigation li.active a {
+            background: #f2f2f2 !important;
+            color: #222 !important;
+            border-radius: 4px;
+        }
+                body {
+                    min-height: 100vh;
+                    margin: 0;
+                    background: url('/assets/img/gallery/gallery2.png') no-repeat center center fixed;
+                    background-size: cover;
+                }
+                .dashboard-container {
+                    max-width: 900px;
+                    margin: 60px auto 0 auto;
+                    background: #fff;
+                    border-radius: 10px;
+                    box-shadow: 0 0 20px rgba(0,0,0,0.08);
+                    padding: 40px 30px;
+                }
+                body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255,255,255,0.5); /* Cambia el color y la opacidad según lo que desees */
+            z-index: 0;
+            pointer-events: none;
+        }
+        body, .dashboard-container {
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
