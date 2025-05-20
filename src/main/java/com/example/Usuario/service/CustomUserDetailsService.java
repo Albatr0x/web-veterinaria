@@ -1,6 +1,6 @@
-package com.example.seguridad.service;
+package com.example.Usuario.service;
 
-import com.example.seguridad.model.Usuario;
+import com.example.Usuario.model.Usuario;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

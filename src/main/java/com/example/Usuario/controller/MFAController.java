@@ -1,15 +1,14 @@
-package com.example.seguridad.controller;
-import  com.example.seguridad.service.TwoFactorAuthenticationService;
-import com.example.seguridad.service.UsuarioService;
+package com.example.Usuario.controller;
+import  com.example.Usuario.service.TwoFactorAuthenticationService;
+import com.example.Usuario.service.UsuarioService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.example.seguridad.model.Usuario;
+import com.example.Usuario.model.Usuario;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import com.example.seguridad.service.UsuarioService;
 
 @Controller
 public class MFAController {

@@ -1,8 +1,6 @@
-package com.example.seguridad.controller;
-import com.example.seguridad.dto.UsuarioDto;
-import com.example.seguridad.dto.LoginRequestDto;
-import com.example.seguridad.dto.LoginResponseDto;
-import com.example.seguridad.service.UsuarioService;
+package com.example.Usuario.controller;
+import com.example.Usuario.dto.LoginResponseDto;
+import com.example.Usuario.service.UsuarioService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -10,17 +8,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.beans.factory.annotation.Value;
 
 @Controller
-public class AuthController {
+public class UsuarioController {
 
     private final UsuarioService usuarioService;
 
 
 
 
-    public AuthController(UsuarioService usuarioService) {
+    public UsuarioController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
     }
 

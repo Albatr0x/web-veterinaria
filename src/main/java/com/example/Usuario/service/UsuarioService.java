@@ -1,34 +1,23 @@
-package com.example.seguridad.service;
-import com.example.seguridad.model.Usuario;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.client.j2se.MatrixToImageWriter;
-import com.google.zxing.common.BitMatrix;
-import com.google.zxing.qrcode.QRCodeWriter;
+package com.example.Usuario.service;
+import com.example.Usuario.model.Usuario;
 import dev.samstevens.totp.code.*;
 import dev.samstevens.totp.exceptions.QrGenerationException;
 import dev.samstevens.totp.qr.QrData;
 import dev.samstevens.totp.qr.QrGenerator;
 import dev.samstevens.totp.qr.ZxingPngQrGenerator;
-import dev.samstevens.totp.secret.DefaultSecretGenerator;
 import dev.samstevens.totp.time.SystemTimeProvider;
 import dev.samstevens.totp.time.TimeProvider;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import com.example.seguridad.dto.UsuarioDto;
-import com.example.seguridad.dto.LoginRequestDto;
-import com.example.seguridad.dto.LoginResponseDto;
-import com.example.seguridad.dto.GuardarSecretRequest;
+import com.example.Usuario.dto.UsuarioDto;
+import com.example.Usuario.dto.LoginRequestDto;
+import com.example.Usuario.dto.LoginResponseDto;
+import com.example.Usuario.dto.GuardarSecretRequest;
 
 
-import java.io.ByteArrayOutputStream;
 import java.util.Base64;
 
 @Service

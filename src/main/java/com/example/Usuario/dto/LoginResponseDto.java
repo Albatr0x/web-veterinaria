@@ -1,4 +1,4 @@
-package com.example.seguridad.dto;
+package com.example.Usuario.dto;
 
 public class LoginResponseDto {
     public String token;

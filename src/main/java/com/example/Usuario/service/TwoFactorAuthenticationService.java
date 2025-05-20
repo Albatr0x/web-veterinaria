@@ -1,4 +1,4 @@
-package com.example.seguridad.service;
+package com.example.Usuario.service;
 import dev.samstevens.totp.code.CodeVerifier;
 import dev.samstevens.totp.code.DefaultCodeVerifier;
 import dev.samstevens.totp.code.DefaultCodeGenerator;

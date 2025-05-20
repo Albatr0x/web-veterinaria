@@ -1,4 +1,4 @@
-package com.example.seguridad.dto;
+package com.example.Usuario.dto;
 
 public class LoginRequestDto {
     public String username;

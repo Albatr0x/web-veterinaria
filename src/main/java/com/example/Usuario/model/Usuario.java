@@ -1,5 +1,4 @@
-package com.example.seguridad.model;
-import jakarta.persistence.*;
+package com.example.Usuario.model;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

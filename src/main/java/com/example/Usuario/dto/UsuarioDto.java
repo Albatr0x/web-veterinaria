@@ -1,4 +1,4 @@
-package com.example.seguridad.dto;
+package com.example.Usuario.dto;
 
 // UsuarioDto.java (puedes ponerlo en un paquete dto)
 public class UsuarioDto {
