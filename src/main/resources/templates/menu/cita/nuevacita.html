@@ -79,7 +79,13 @@
                   </li>
                   <li><a href="/servicios">Servicios</a></li>
                   <li><a href="/veterinarias">Veterinarias</a></li>
-                  <li><a href="/mascotas">Mascotas</a></li>
+                  <li class="nav-item dropdown">
+                    <a href="#" class="dropdown-toggle" id="mascotasDropdown" data-bs-toggle="dropdown" aria-expanded="false">Mascotas</a>
+                    <ul class="dropdown-menu" aria-labelledby="mascotasDropdown">
+                      <li><a class="dropdown-item" href="/menu/mascota/registrarmascota">Registrar mascota</a></li>
+                      <li><a class="dropdown-item" href="/menu/mascota/consultarmascota">Mis Mascotas</a></li>
+                    </ul>
+                  </li>
                   <li><a href="/resultados">Resultados</a></li>
                   <li>
                     <form th:action="@{/logout}" method="post" style="display:inline;">

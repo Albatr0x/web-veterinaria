@@ -37,7 +37,9 @@ public class SecurityConfig {
                         ).permitAll()
                         .requestMatchers(
                                 "/cita/nuevacita",
-                                "/cita/listarcitas.html"
+                                "/cita/listarcitas.html",
+                                "/mascota/registrarmascota",
+                                "/mascota/consultarmascota.html"
                         ).authenticated()
                         .anyRequest().authenticated()
                 )

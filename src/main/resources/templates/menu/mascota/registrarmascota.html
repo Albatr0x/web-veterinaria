@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Mascota</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: url('/assets/img/gallery/gallery2.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .dashboard-container {
+            max-width: 900px;
+            margin: 60px auto 0 auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.08);
+            padding: 40px 30px;
+            position: relative;
+            z-index: 1;
+        }
+        /* Elimina completamente el overlay personalizado */
+        body::before {
+            display: none !important;
+        }
+        /* Elimina cualquier z-index alto en modal-open::before */
+        body.modal-open::before {
+            display: none !important;
+        }
+        body.no-overlay::before {
+            display: none !important;
+        }
+        .modal-backdrop {
+            z-index: 1050 !important;
+        }
+        .modal {
+            z-index: 1060 !important;
+        }
+        .modal-backdrop,
+    .modal-backdrop.show {
+        opacity: 0 !important;
+        display: none !important;
+
+    </style>
+</head>
+<body>
+<header>
+
+        <div class="header-area">
+            <div class="main-header" style="background:#fff;">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-xl-2 col-lg-2">
+                            <div class="logo">
+                                <a href="/index.html"><img src="/assets/img/logo/logo.png" alt="Logo" style="height:40px;"></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-8 col-lg-8">
+                            <div class="main-menu f-right d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a href="/dashboard">Ir al Inicio</a></li>
+                                        <li class="nav-item dropdown">
+                                            <a href="#" class="dropdown-toggle" id="citasDropdown" data-bs-toggle="dropdown" aria-expanded="false">Citas</a>
+                                            <ul class="dropdown-menu" aria-labelledby="citasDropdown">
+                                                <li><a class="dropdown-item" href="/menu/cita/nuevacita">Registrar Cita</a></li>
+                                                <li><a class="dropdown-item" href="/menu/cita/listarcitas">Mis Citas</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="/servicios">Servicios</a></li>
+                                        <li><a href="/veterinarias">Veterinarias</a></li>
+                                        <li class="nav-item dropdown">
+                                            <a href="#" class="dropdown-toggle" id="mascotasDropdown" data-bs-toggle="dropdown" aria-expanded="false">Mascotas</a>
+                                            <ul class="dropdown-menu" aria-labelledby="mascotasDropdown">
+                                                <li><a class="dropdown-item" href="/menu/mascota/registrarmascota">Registrar mascota</a></li>
+                                                <li><a class="dropdown-item" href="/menu/mascota/consultarmascota">Mis Mascotas</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="/resultados">Resultados</a></li>
+                                        <li>
+                                            <form th:action="@{/logout}" method="post" style="display:inline;">
+                                                <button type="submit" class="btn btn-link nav-link" style="display:inline; padding:0;">Cerrar sesión</button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2">
+                            <div class="header-right-btn f-right d-none d-lg-block">
+                                <div class="dropdown">
+                                    <a class="btn btn-light dropdown-toggle d-flex align-items-center" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
+                                        <i class="fas fa-user-circle fa-lg me-2"></i>
+                                        <span th:text="${username}">Usuario</span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                        <li>
+                                            <a class="dropdown-item" href="/index.html">Cerrar sesión</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+<div class="dashboard-container">
+    <h2>Registrar Mascota</h2>
+    <form th:action="@{/menu/mascota/registrar}" method="post">
+        <div class="mb-3">
+            <label for="nombremascota" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombremascota" name="nombremascota" required maxlength="20" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ ]{1,20}" title="Sólo letras y máximo 20 caracteres" oninput="this.value=this.value.replace(/[^A-Za-záéíóúÁÉÍÓÚñÑ ]/g,'').slice(0,20)">
+        </div>
+        <div class="mb-3">
+            <label for="especiemascota" class="form-label">Especie</label>
+            <select class="form-control" id="especiemascota" name="especiemascota" required>
+                <option value="">Seleccione una especie</option>
+                <option value="Perro">Perro</option>
+                <option value="Gato">Gato</option>
+                <option value="Ave">Ave</option>
+                <option value="Pez">Pez</option>
+                <option value="Tortuga">Tortuga</option>
+                <option value="Conejo">Conejo</option>
+                <option value="Roedor">Roedor</option>
+                <option value="Reptil">Reptil</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="razamascota" class="form-label">Raza</label>
+            <input type="text" class="form-control" id="razamascota" name="razamascota"
+                   required maxlength="16"
+                   pattern="[A-Za-záéíóúÁÉÍÓÚñÑ ]{1,16}"
+                   title="Sólo letras y máximo 16 caracteres"
+                   oninput="this.value=this.value.replace(/[^A-Za-záéíóúÁÉÍÓÚñÑ ]/g,'').slice(0,16)">
+        </div>
+        <div class="mb-3">
+            <label for="edadmascota" class="form-label">Edad</label>
+            <input type="number" class="form-control" id="edadmascota" name="edadmascota" min="0" max="99" step="1" required maxlength="2" oninput="if(this.value.length>2)this.value=this.value.slice(0,2);">
+        </div>
+        <div class="mb-3">
+            <label for="pesomascota" class="form-label">Peso (kg)</label>
+            <input type="number" step="0.01" class="form-control" id="pesomascota" name="pesomascota"
+                   min="0" max="99.99" pattern="^\d{1,2}(\.\d{1,2})?$"
+                   title="Máximo 2 dígitos enteros y 2 decimales" required>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Registrar Mascota</button>
+        </div>
+    </form>
+
+    <!-- Modal Bootstrap -->
+    <div class="modal fade" id="modalMensaje" tabindex="-1" aria-labelledby="modalMensajeLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalMensajeLabel">Mensaje</h5>
+                </div>
+                <div class="modal-body" id="modalMensajeBody"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnAceptarModal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+          var modalEl = document.getElementById('modalMensaje');
+          if (modalEl) {
+            modalEl.addEventListener('show.bs.modal', function () {
+              document.body.classList.add('no-overlay');
+            });
+            modalEl.addEventListener('hidden.bs.modal', function () {
+              document.body.classList.remove('no-overlay');
+            });
+          }
+
+          /*<![CDATA[*/
+          let mensajeExito = [[${mensajeExito != null}]];
+          let mensajeError = [[${mensajeError != null}]];
+          let textoExito = [[${mensajeExito}]];
+          let textoError = [[${mensajeError}]];
+
+          if (mensajeExito || mensajeError) {
+              let mensaje = mensajeExito ? textoExito : textoError;
+              document.getElementById('modalMensajeBody').textContent = mensaje;
+              let modal = new bootstrap.Modal(document.getElementById('modalMensaje'));
+              modal.show();
+              document.getElementById('btnAceptarModal').onclick = function() {
+                  modal.hide();
+                  window.location.href = /*[[@{/dashboard}]]*/ '/dashboard';
+              };
+          }
+          /*]]>*/
+        });
+    </script>
+
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+</div> <!-- Cierra dashboard-container -->
+</body>
+</html>
